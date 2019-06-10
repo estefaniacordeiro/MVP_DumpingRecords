@@ -1,0 +1,28 @@
+{
+  "name": "back_mymvp",
+  "version": "1.0.0",
+  "description": "Backend MVP dumping records",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/estefaniacordeiro/MVP_DumpingRecords.git"
+  },
+  "keywords": [
+    "dumping"
+  ],
+  "author": "Estefania Cordeiro Brion",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/estefaniacordeiro/MVP_DumpingRecords/issues"
+  },
+  "homepage": "https://github.com/estefaniacordeiro/MVP_DumpingRecords#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "express": "^4.17.1"
+  }
+}
