@@ -16,8 +16,7 @@ async function connect() {
     };
 
     /**
-     * Create connection pool and
-     * promisify it to use async / await
+     * Create connection pool and promisify it to use async/await
      */
     const pool = mysql.createPool(options);
     this.pool = pool.promise();
@@ -33,6 +32,9 @@ async function connect() {
     }
 }
 
+/**
+ * Get mysql connection 
+ */
 async function getConnection() {
     if (this.pool === null) {
         throw new Error("MySQL connection didn't established. You must connect first.");
