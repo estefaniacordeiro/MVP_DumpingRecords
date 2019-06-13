@@ -4,7 +4,7 @@ const express = require('express');
 
 const router = express.Router();
 
-const createRecordController = require('../controllers/create-record/create-record-controller');
+const createRecordController = require('../controllers/record/create-record-controller');
 
 /**
  * Define routes
@@ -13,4 +13,3 @@ const createRecordController = require('../controllers/create-record/create-reco
 router.post('/new-record', createRecordController);
 
 module.exports = router;
-
