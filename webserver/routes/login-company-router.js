@@ -4,11 +4,11 @@ const express = require('express');
 
 const router = express.Router();
 
-const loginAdminController = require('../controllers/login-admin-controller');
+const loginCompanyController = require('../controllers/login-company-controller');
 
 /**
  * Define routes
  */
-router.post('/login', loginAdminController);
+router.post('/login', loginCompanyController);
 
 module.exports = router;
