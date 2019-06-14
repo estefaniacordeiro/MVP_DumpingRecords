@@ -12,7 +12,7 @@ const mysqlPool = require('../../../database/mysql-pool');
 sendgridMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 /**
- * Create middleware for routing check
+ * Create controller for routing check
  */
 // async function createRecord(req, res, next) {
 //     return res.status(500).send('hola');

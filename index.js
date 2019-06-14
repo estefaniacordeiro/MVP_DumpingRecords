@@ -23,6 +23,7 @@ const app = express();
  */
 app.use(bodyParser.json());
 app.use('/api', routers.recordRouter);
+app.use('/api', routers.loginRouter);
 
 /**
  * Init connection to mysql
