@@ -27,7 +27,7 @@ async function validateSchema(payload) {
   /**
    * TODO: Fill email, password and full name rules to be (all fields are mandatory):
    *  email: Valid email
-   *  password: Letters (upper and lower case) and number:
+   *  numberRecord: Letters  and number:
    *    Minimun 3 and max 125 characters, using next regular expression: /^[a-zA-Z0-9]{3,30}$/
    */
   const schema = {
@@ -36,7 +36,7 @@ async function validateSchema(payload) {
       .required(),
     numberRecord: Joi.string()
       .regex(/^[a-zA-Z0-9]{3,30}$/)
-      .required()
+      .required(),
   };
 
   return Joi.validate(payload, schema);

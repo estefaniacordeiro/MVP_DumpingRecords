@@ -1,9 +1,9 @@
 'use strict';
 
 const recordRouter = require('./record-router');
-const loginRouter = require('./login-router');
+const loginAdminRouter = require('./login-admin-router');
 
 module.exports = {
     recordRouter,
-    loginRouter,
+    loginAdminRouter,
 };
