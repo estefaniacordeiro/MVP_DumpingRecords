@@ -27,15 +27,16 @@ async function validateSchema(payload) {
   /**
    * TODO: Fill email, password and full name rules to be (all fields are mandatory):
    *  email: Valid email
-   *  numberRecord: Letters  and number:
-   *    Minimun 3 and max 125 characters, using next regular expression: /^[a-zA-Z0-9]{3,30}$/
+   *  numberRecord: Letters  and number,
+   * minimun 3 and max 125 characters, using
+   * next regular expression: /^[a-zA-Z0-9]{12,16}$/
    */
   const schema = {
     email: Joi.string()
-      .email({ minDomainAtoms: 2 })
+      .email({ minDomainSegments: 2 })
       .required(),
     numberRecord: Joi.string()
-      .regex(/^[a-zA-Z0-9]{3,30}$/)
+      .regex(/^[a-zA-Z0-9]{12,16}$/)
       .required(),
   };
 
@@ -73,11 +74,12 @@ async function addVerificationCode(uuid) {
  * Middleware to send email registration email
  * to company users.
  * @param {String} userEmail
+ * @param {String} numberRecord
  * @param {String} verificationCode
  * @return {Object} data
  */
 
-async function sendEmailRegistration(userEmail, verificationCode) {
+async function sendEmailRegistration(userEmail, numberRecord, verificationCode) {
   const linkActivacion = `http://localhost:3000/api/account/activate?verification_code=${verificationCode}`;
   const msg = {
     to: userEmail,
@@ -88,7 +90,7 @@ async function sendEmailRegistration(userEmail, verificationCode) {
     subject: 'Benvido a Exp@',
     text1: 'Exp@ é a aplicación web de seguimento de expedientes de vertidos.',
     text2: `A contrasinal para acceder ao seu expediente será o número de expediente ${numberRecord}`,
-    html: `Active a súa conta no seguinte enlace<a href='${linkActivacion}'>para realizar o seguimento do seu expediente de vertido</a>`
+    html: `Para realizar o seguimento do seu expediente de vertido active a súa conta no seguinte <a href='${linkActivacion}'>enlace</a>`,
   };
 
   const data = await sendgridMail.send(msg);
@@ -121,21 +123,21 @@ async function createRecord(req, res, next) {
     .replace('T', ' ');
 
   const connection = await mysqlPool.getConnection();
-
   const sqlInsercion = 'INSERT INTO users SET ?';
-
+  console.log('hello1');
   try {
     await connection.query(sqlInsercion, {
       uuid,
       email: accountData.email,
-      numberRecord: accountData.numberRecord,
+      // numberRecord: accountData.numberRecord,
       created_at: createdAt,
     });
+    console.log('hello2')
     connection.release();
 
     const verificationCode = await addVerificationCode(uuid);
 
-    await sendEmailRegistration(accountData.email, verificationCode);
+    await sendEmailRegistration(accountData.email, accountData.numberRecord, verificationCode);
 
     return res.status(201).send();
   } catch (e) {

@@ -12,3 +12,11 @@
 * Initially only the necessary admin users will be created. In this case, only one. 
 * If you want to create more admin users, the file `.gitignore` refers to a file `createUserAdmin.js`, which is used to enter in the database the hashed password and uuid of that admin. 
 
+## Flow of the web application
+* ENDPOINTS:
+* - /api/login-admin -> 
+* - /api/search-record ->
+* - /api/new-record ->
+* - /api/login ->
+* - /api/record ->
+

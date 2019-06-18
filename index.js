@@ -25,6 +25,7 @@ app.use(bodyParser.json());
 app.use('/api', routers.recordRouter);
 app.use('/api', routers.loginAdminRouter);
 app.use('/api', routers.loginCompanyRouter);
+app.use('/api', routers.searchRouter);
 
 /**
  * Init connection to mysql
