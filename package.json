@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/estefaniacordeiro/MVP_DumpingRecords#readme",
   "dependencies": {
-    "@hapi/joi": "^15.0.3",
+    "@hapi/joi": "^15.1.1",
     "@sendgrid/mail": "^6.4.0",
     "@types/hapi__joi": "^15.0.2",
     "bcrypt": "^3.0.6",
